@@ -22,43 +22,43 @@ public class BaseClass {
     DashboardPage dashboardpage;
     WaitHelper waithelper;
     ReadConfig readconfig;
+
     public void setup() throws IOException {
 
         readconfig = new ReadConfig();
 
         //get the browser name and accordingly open the required browser
         String browser = readconfig.getBrowser();
-       switch (browser)
-       {
-           case "chrome":
-               WebDriverManager.chromedriver().setup();
+        switch (browser) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
 
-               ChromeOptions options = new ChromeOptions();
-               options.addArguments("enable-automation");
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("enable-automation");
 //        options.addArguments("--headless");
-               options.addArguments("--no-sandbox");
-               options.addArguments("--disable-extensions");
-               options.addArguments("--dns-prefetch-disable");
-               options.addArguments("--disable-gpu");
-               options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-extensions");
+                options.addArguments("--dns-prefetch-disable");
+                options.addArguments("--disable-gpu");
+                options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-               driver = new ChromeDriver(options);
-               break;
+                driver = new ChromeDriver(options);
+                break;
 
-           case "firefox":
-               System.out.print("please setup the firefox browser");
-               break;
+            case "firefox":
+                System.out.print("please setup the firefox browser");
+                break;
 
 
-           case "edge":
-               System.out.print("please setup the edge browser");
-               break;
+            case "edge":
+                System.out.print("please setup the edge browser");
+                break;
 
-           default:
-               System.out.print("wrong entry in config.properties for for browseName");
-               break;
+            default:
+                System.out.print("wrong entry in config.properties for browseName");
+                break;
 
-       }
+        }
 
         driver.manage().window().maximize();
 

@@ -4,8 +4,7 @@ Feature:login functionality
     Given I have opened the chrome browser and opened the url as "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
 
 
-
-
+  @smoke
 # test login with valid credentials
   Scenario: Test login for application with valid credentials
     When I landed in login page I have provided username as "Admin" and password as "admin123"
