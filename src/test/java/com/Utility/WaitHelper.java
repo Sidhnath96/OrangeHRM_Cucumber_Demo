@@ -10,9 +10,9 @@ import java.time.Duration;
 public class WaitHelper {
 
     WebDriverWait wait;
-   public  WaitHelper(WebDriver driver,long time)
-    {
-         wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+
+    public WaitHelper(WebDriver driver, long time) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(time));
 
     }
 

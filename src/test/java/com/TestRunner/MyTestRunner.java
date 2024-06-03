@@ -11,7 +11,8 @@ import org.junit.runner.RunWith;
         features = {"Features/Login.feature"},
         glue = "com/StepDefinition",
         plugin = {"pretty", "html:test-output.html"},
-        dryRun = false
+        dryRun = false,
+        tags = "@smoke"
 )
-public class LoginTestRunner {
+public class MyTestRunner {
 }

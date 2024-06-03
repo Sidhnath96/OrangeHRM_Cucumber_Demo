@@ -21,9 +21,8 @@ public class ReadConfig {
 
     // created the methods to read the entries from property file and use it further
 
-    public String getBrowser()
-    {
-        String browsername=pro.getProperty("browserName");
+    public String getBrowser() {
+        String browsername = pro.getProperty("browserName");
         return browsername;
 
     }
