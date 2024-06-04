@@ -61,6 +61,10 @@ public class BaseClass {
         }
 
         driver.manage().window().maximize();
+        /*
+        * Hello
+        *
+        * */
 
         /*
             after initialise driver do initialize the pom classes and required utilities here
