@@ -65,7 +65,7 @@ public class LoginSteps {
 
         BaseClass.waithelper.waitForElementToBeVisible(BaseClass.loginpage.alermsg);
         boolean flag = BaseClass.loginpage.alermsg.isDisplayed();
-        Assert.assertTrue(false);
+        Assert.assertTrue(flag);
 
     }
 
