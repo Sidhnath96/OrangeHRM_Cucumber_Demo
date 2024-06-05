@@ -7,21 +7,19 @@ import java.io.IOException;
 
 public class LoginSteps {
 
-    BaseClass baseclass = new BaseClass();
-
 
     @Given("I have opened the chrome browser and opened the url as {string}")
     public void i_have_opened_the_chrome_browser_and_opened_the_url_as(String url) throws IOException {
-        BaseClass.driver.get(url);
+        BaseClass.driver.get(BaseClass.readconfig.getURL());
     }
 
-    @When("I landed in login page I have provided username as {string} and password as {string}")
-    public void i_landed_in_login_page_i_have_provided_username_as_and_password_as(String uname, String pass) {
+    @When("I landed on login page I have provided valid username as {string} and valid password as {string}")
+    public void i_landed_on_login_page_i_have_provided_username_as_and_password_as(String validuname, String validpass) {
         BaseClass.waithelper.waitForElementToBeVisible(BaseClass.loginpage.username_textbox);
-        BaseClass.loginpage.setUserName(uname);
+        BaseClass.loginpage.setUserName(BaseClass.readconfig.getValidUserName());
 
         BaseClass.waithelper.waitForElementToBeVisible(BaseClass.loginpage.password_textbox);
-        BaseClass.loginpage.setPassword(pass);
+        BaseClass.loginpage.setPassword(BaseClass.readconfig.getValidPassword());
     }
 
     @When("I clicked on login button")
@@ -50,8 +48,16 @@ public class LoginSteps {
         LoginSteps loginsteps = new LoginSteps();
         loginsteps.i_logged_in_successfully_showing_page_title_as("OrangeHRM");
 
+    }
 
 
+    @When("I landed on login page I have provided invalid username as {string} and invalid password as {string}")
+    public void i_Landed_on_Login_Page_I_Have_Provided_Invalid_Username_As_And_Invalid_Password_As(String ivaliduname, String invalidpass) {
+        BaseClass.waithelper.waitForElementToBeVisible(BaseClass.loginpage.username_textbox);
+        BaseClass.loginpage.setUserName(BaseClass.readconfig.getInvalidUserName());
+
+        BaseClass.waithelper.waitForElementToBeVisible(BaseClass.loginpage.password_textbox);
+        BaseClass.loginpage.setPassword(BaseClass.readconfig.getInvalidPassword());
     }
 
     @Then("I got error message")

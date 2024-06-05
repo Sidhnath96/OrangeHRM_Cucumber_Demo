@@ -7,12 +7,19 @@ import com.Utility.WaitHelper;
 import io.cucumber.java.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.PageLoadStrategy;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.io.FileHandler;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class BaseClass {
 
@@ -26,9 +33,13 @@ public class BaseClass {
     @Before
     public void setup() throws IOException {
 
+        /**
+         * I have configured the required properties here using ReadConfig class
+         * simply call the method using BaseClass reference
+         */
         readconfig = new ReadConfig();
 
-        //get the browser name and accordingly open the required browser
+
         String browser = readconfig.getBrowser();
         switch (browser) {
             case "chrome":
@@ -36,7 +47,7 @@ public class BaseClass {
 
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("enable-automation");
-//        options.addArguments("--headless");
+//              options.addArguments("--headless");
                 options.addArguments("--no-sandbox");
                 options.addArguments("--disable-extensions");
                 options.addArguments("--dns-prefetch-disable");
@@ -74,9 +85,50 @@ public class BaseClass {
 
     }
 
-    @After
-    public void tearDown() {
+
+    @After(order = 1)
+    public void takesScreenshot(@org.jetbrains.annotations.NotNull Scenario scenario) {
+        /**
+         * This method will use the scenario object and based on status of scenario we will capture the shot
+         */
+
+        if (scenario.isFailed()) {
+            // Create a timestamp
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+
+            // Define the file name with timestamp
+            String fileName = scenario.getName().replace(" ", "_") + timeStamp + ".png";
+
+                      // Define the file path
+            File filePath = new File("./Screenshots", fileName);
+
+            // Take the screenshot
+            TakesScreenshot ts = (TakesScreenshot) driver;
+            File srcFile = ts.getScreenshotAs(OutputType.FILE);
+
+            try {
+                // Save the screenshot
+                FileHandler.copy(srcFile, filePath);
+                System.out.println("Screenshot saved as " + filePath.getAbsolutePath());
+            } catch (IOException e) {
+                System.err.println("Error saving the screenshot: " + e.getMessage());
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+    @After(order = 0)
+    public void tearDown () {
         if (driver != null)
             driver.quit();
     }
+
+
+
 }

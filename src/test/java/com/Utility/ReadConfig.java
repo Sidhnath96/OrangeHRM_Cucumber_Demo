@@ -21,9 +21,36 @@ public class ReadConfig {
 
     // created the methods to read the entries from property file and use it further
 
+    public String getValidUserName() {
+        String validusername = pro.getProperty("myValidUserName");
+        return validusername;
+
+    }
+
+    public String getValidPassword() {
+        String validpassword = pro.getProperty("myValidPassword");
+        return validpassword;
+
+    }
+    public String getInvalidUserName() {
+        String invalidusername = pro.getProperty("myInvalidUserName");
+        return invalidusername;
+
+    }
+    public String getInvalidPassword() {
+        String invalidpassword = pro.getProperty("myInvalidPassword");
+        return invalidpassword;
+
+    }
+    public String getURL() {
+        String url = pro.getProperty("myUrl");
+        return url;
+
+    }
+
     public String getBrowser() {
-        String browsername = pro.getProperty("browserName");
-        return browsername;
+        String browser = pro.getProperty("browserName");
+        return browser;
 
     }
 }
