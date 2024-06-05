@@ -18,11 +18,12 @@ public class BaseClass {
 
     public static WebDriver driver;
 
-    LoginPage loginpage;
-    DashboardPage dashboardpage;
-    WaitHelper waithelper;
-    ReadConfig readconfig;
+    public static LoginPage loginpage;
+    public static DashboardPage dashboardpage;
+    public static WaitHelper waithelper;
+    public static ReadConfig readconfig;
 
+    @Before
     public void setup() throws IOException {
 
         readconfig = new ReadConfig();
@@ -61,10 +62,7 @@ public class BaseClass {
         }
 
         driver.manage().window().maximize();
-        /*
-        * Hello
-        *
-        * */
+
 
         /*
             after initialise driver do initialize the pom classes and required utilities here
@@ -76,6 +74,7 @@ public class BaseClass {
 
     }
 
+    @After
     public void tearDown() {
         if (driver != null)
             driver.quit();
