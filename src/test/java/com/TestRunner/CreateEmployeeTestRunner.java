@@ -8,11 +8,13 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-        features = {"Features/Login.feature"},
+        features = {"Features/Employee.feature"},
         glue = "com/StepDefinition",
         plugin = {"pretty", "html:test-output.html"},
         dryRun = false,
-        tags = "@smoke"
+        tags ="@implemented"
 )
-public class MyTestRunner {
+
+public class CreateEmployeeTestRunner {
+
 }

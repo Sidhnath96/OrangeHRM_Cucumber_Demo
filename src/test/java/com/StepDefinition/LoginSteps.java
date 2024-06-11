@@ -1,11 +1,14 @@
 package com.StepDefinition;
 
 import io.cucumber.java.en.*;
+import org.jsoup.Connection;
 import org.junit.Assert;
 
 import java.io.IOException;
+import java.time.Duration;
 
 public class LoginSteps {
+
 
 
     @Given("I have opened the chrome browser and opened the url as {string}")
@@ -41,6 +44,7 @@ public class LoginSteps {
         BaseClass.waithelper.waitForElementToBeVisible(BaseClass.dashboardpage.logout_btn);
         BaseClass.dashboardpage.clickLogoutbtn();
 
+
         /*
          I called this method to validate whether i navigate to loginpage
 
@@ -66,6 +70,7 @@ public class LoginSteps {
         BaseClass.waithelper.waitForElementToBeVisible(BaseClass.loginpage.alermsg);
         boolean flag = BaseClass.loginpage.alermsg.isDisplayed();
         Assert.assertTrue(flag);
+
 
     }
 

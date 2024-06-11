@@ -4,7 +4,7 @@ Feature:login functionality
     Given I have opened the chrome browser and opened the url as "myUrl"
 
 
-  @smoke
+
 # test login with valid credentials
   Scenario: Test login for application with valid credentials
     When I landed on login page I have provided valid username as "myValidUserName" and valid password as "myValidPassword"

@@ -49,4 +49,12 @@ public class LoginPage {
         login_btn.click();
     }
 
+
+    public void doLogIn(String uname, String pass)
+    {
+        setUserName(uname);
+        setPassword(pass);
+        clickLogin();
+    }
+
 }

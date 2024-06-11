@@ -2,6 +2,7 @@ package com.StepDefinition;
 
 import com.Pom.DashboardPage;
 import com.Pom.LoginPage;
+import com.Pom.PIMpage;
 import com.Utility.ReadConfig;
 import com.Utility.WaitHelper;
 import io.cucumber.java.*;
@@ -29,7 +30,7 @@ public class BaseClass {
     public static DashboardPage dashboardpage;
     public static WaitHelper waithelper;
     public static ReadConfig readconfig;
-
+    public static PIMpage pimpage;
     @Before
     public void setup() throws IOException {
 
@@ -82,6 +83,8 @@ public class BaseClass {
         waithelper = new WaitHelper(driver, 15);
         loginpage = new LoginPage(driver);
         dashboardpage = new DashboardPage(driver);
+        pimpage = new PIMpage(driver);
+
 
     }
 
@@ -123,7 +126,7 @@ public class BaseClass {
     }
 
 
-    @After(order = 0)
+//    @After(order = 0)
     public void tearDown () {
         if (driver != null)
             driver.quit();
